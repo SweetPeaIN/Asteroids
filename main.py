@@ -10,14 +10,25 @@ def main():
 
     # Displaying a GUI window
     screen = pygame.display.set_mode((constants.SCREEN_WIDTH, constants.SCREEN_HEIGHT))
+    # screen is an instance of Surface type
+    # Pygame draws everything on a surface
+
+    # Pygame clock object : to track time
+    clock = pygame.time.Clock()
+    dt = 0 # delta : amt of time till last variable was drawn
 
     # Game Loop
-    while(True):
+    while True:
+        # for closing the game
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
                 return
-        pygame.Surface.fill(screen, (0,0,0))
-        pygame.display.flip()
+            
+        screen.fill("black") # color the "screen" instance fully black 
+        pygame.display.flip() # update the full display surface
+
+        # Pausing game for 1/60 of a second
+        dt = clock.tick(60) / 1000 # returns the amt of time since it was last called in miliseconds
 
 
 if __name__ == "__main__":
