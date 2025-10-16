@@ -1,5 +1,6 @@
 import pygame
 import constants
+from player import Player
 
 def main():
     print("Starting Asteroids!")
@@ -17,6 +18,9 @@ def main():
     clock = pygame.time.Clock()
     dt = 0 # delta : amt of time till last variable was drawn
 
+    # Player Object
+    player = Player(constants.SCREEN_WIDTH/2, constants.SCREEN_HEIGHT/2)
+
     # Game Loop
     while True:
         # for closing the game
@@ -25,10 +29,12 @@ def main():
                 return
             
         screen.fill("black") # color the "screen" instance fully black 
+        player.draw(screen) # render player shape on screen
         pygame.display.flip() # update the full display surface
 
         # Pausing game for 1/60 of a second
         dt = clock.tick(60) / 1000 # returns the amt of time since it was last called in miliseconds
+
 
 
 if __name__ == "__main__":
