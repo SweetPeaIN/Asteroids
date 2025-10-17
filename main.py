@@ -30,6 +30,7 @@ def main():
             
         screen.fill("black") # color the "screen" instance fully black 
         player.draw(screen) # render player shape on screen
+        player.update(dt) # check for any user input and update acc
         pygame.display.flip() # update the full display surface
 
         # Pausing game for 1/60 of a second

@@ -19,3 +19,16 @@ class Player(CircleShape):
     # override draw method
     def draw(self, screen):
         pygame.draw.polygon(screen, "white", self.triangle(), 2)
+
+    # rotate function
+    def rotate(self, dt):
+        self.rotation += constants.PLAYER_TURN_SPEED * dt
+
+    # update rotation value
+    def update(self, dt):
+        keys = pygame.key.get_pressed() # listening for keypress
+
+        if keys[pygame.K_a]: # left rotation
+            self.rotate(-dt) 
+        if keys[pygame.K_d]: # right rotation
+            self.rotate(dt)
