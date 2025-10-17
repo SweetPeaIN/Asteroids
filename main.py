@@ -18,6 +18,13 @@ def main():
     clock = pygame.time.Clock()
     dt = 0 # delta : amt of time till last variable was drawn
 
+    # creating groups
+    updateable = pygame.sprite.Group()
+    drawable = pygame.sprite.Group()
+
+    # Adding Player to groups
+    Player.containers = (updateable, drawable)
+
     # Player Object
     player = Player(constants.SCREEN_WIDTH/2, constants.SCREEN_HEIGHT/2)
 
@@ -29,8 +36,13 @@ def main():
                 return
             
         screen.fill("black") # color the "screen" instance fully black 
-        player.draw(screen) # render player shape on screen
-        player.update(dt) # check for any user input and update acc
+        
+        
+        for d in drawable:
+            d.draw(screen) # render player shape on screen
+        
+        
+        updateable.update(dt) # check for any user input and update acc
         pygame.display.flip() # update the full display surface
 
         # Pausing game for 1/60 of a second
