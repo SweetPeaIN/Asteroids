@@ -3,6 +3,7 @@ import constants
 from player import Player
 from asteroid import Asteroid
 from asteroidfield import AsteroidField
+import sys
 
 def main():
     print("Starting Asteroids!")
@@ -49,6 +50,14 @@ def main():
         
         
         updatable.update(dt) # check for any user input and update acc
+
+        # Iterate over each obj in the group, and check collision with 
+        # circle object in our case player
+        for a in asteroids:
+            if a.collision(player):
+                print("Game over!")
+                sys.exit()
+
         pygame.display.flip() # update the full display surface
 
         # Pausing game for 1/60 of a second
