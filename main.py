@@ -61,7 +61,7 @@ def main():
                 print("Game over!")
                 sys.exit()
 
-
+        # for evry asteroid check if any 1 shot collides
         for a in asteroids:
             for s in shots:
                 if s.collision(a):
